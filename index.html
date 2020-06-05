@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasmine Parent Child Testing Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.css"
+        integrity="sha256-US46s8iE//XjSFdoo70XyCnsGALF7ggrHbPCHqvoRn4=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.js"
+        integrity="sha256-PePX8Jc4TIxzzVz0Qe4NsH3OUU8+Y49DBWvYgggNqkY=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine-html.min.js"
+        integrity="sha256-MA/hJEAa59GZN7vr2yeB780ZY0aP5N/bvN1IzEyli6I=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/boot.js"
+        integrity="sha256-HG8TKl0T65NyELmbUoo0H7/a1e++smYdXXtuuEsyKok=" crossorigin="anonymous"></script>
+    <!-- JS to test -->
+    <script>
+        class Parent {
+            constructor(name) {
+                this.name = name;
+            }
+
+            getName() {
+                return this.name;
+            }
+        }
+        class Child extends Parent {
+            constructor(name) {
+                super(name);
+            }
+
+            getMessage() {
+                return 'Hi ' + super.getName();
+            }
+        }
+
+    </script>
+    <!-- Jasmine Test Suite -->
+    <script>
+        describe("Test Parent Child Classes", function () {
+            it("Get Message Test", function () {
+                let someone = new Child('John Doe');
+                expect(someone.getMessage()).toEqual("Hi John Doe");
+            });
+
+        });  
+    </script>
+</head>
+<body>
+    <h1> Jasmine Parent Child Class Testing Demo </h1>
+</body>
+</html>
